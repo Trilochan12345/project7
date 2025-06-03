@@ -72,10 +72,15 @@
 
   <div class="login-container">
     <h2>Login</h2>
-    <form action="/" method="post">
-      <input type="text" name="username" placeholder="Username" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit">Login</button>
+    <form action="/login" method="post">
+        <?= csrf_field() ?>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Username" autocomplete="username" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" autocomplete="current-password" required />
+
+        <button type="submit">Login</button>
     </form>
     <div class="register-link">
       Don't have an account? <a href="/register">Register</a>

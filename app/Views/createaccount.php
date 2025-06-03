@@ -54,58 +54,38 @@
   </div>
 </div>
 
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">
-    <i class="bi bi-search"></i>
-  </span>
-  <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon1">
-</div>
-
-<form action="/additemvalue" method="post">
-  <?= csrf_field() ?>
-
-  <div class="mb-3">
-    <label for="itemName" class="form-label">Item Name</label>
-    <input type="text" name="name" class="form-control" placeholder="Item name" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Add Item</button>
-</form>
-
-
-
-
 <!-- Main Content -->
 <main class="content container">
   <div class="row gy-4">
+<form action="/codersadd" method="post">
+    <?= csrf_field() ?>
 
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Item Name</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php if (!empty($items)): ?>
-      <?php foreach ($items as $item): ?>
-        <tr>
-          <td><?= esc($item['id']) ?></td>
-          <td><?= esc($item['item_name']) ?></td>
-          <td>
-            <!-- Example actions: Edit & Delete -->
-            <a href="/edititem/<?= $item['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
-            <a href="/deleteitem/<?= $item['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
-          </td>
-        </tr>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <tr>
-        <td colspan="3">No items found.</td>
-      </tr>
-    <?php endif; ?>
-  </tbody>
-</table>
+    <div class="mb-3">
+        <input type="text" name="name" class="form-control" placeholder="Name" required>
+    </div>
+
+    <div class="mb-3">
+        <input type="email" name="email" class="form-control" placeholder="Email" required>
+    </div>
+
+    <div class="mb-3">
+        <input type="text" name="phone" class="form-control" placeholder="Phone Number" required>
+    </div>
+
+    <div class="mb-3">
+        <input type="text" name="series" class="form-control" placeholder="Enter Series" required>
+    </div>
+
+    <div class="mb-3">
+        <input type="password" name="password" class="form-control" placeholder="6-Digit Numeric Password"  required>
+    </div>
+
+    <div class="mb-3">
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </div>
+</form>
+
+
 
 </div>
 
@@ -115,6 +95,7 @@
 
   </div>
 </main>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>

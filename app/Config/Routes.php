@@ -7,18 +7,25 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/welcome', 'Home::index');
 
+// Login routes
 $routes->get('/', 'Home::login');
+$routes->post('/login', 'Home::auth');
 
-$routes->post('/', 'Home::login');
+$routes->get('/logout', 'Home::logout');
 
+// Registration
 $routes->get('/register', 'Home::register');
 
+// Dashboard and other pages
 $routes->get('/dashboard', 'Home::dashboard');
-
 $routes->get('/dispatch', 'Home::dispatch');
-
 $routes->get('/codes', 'Home::codes');
-
 $routes->get('/coders', 'Home::coders');
+$routes->get('/createaccount', 'Home::createaccount');
 
-$routes->get('/additem', 'Home::additem');
+// Add Item route (GET to show form, POST to submit form)
+$routes->match(['get', 'post'], 'additem', 'Home::additem');
+
+$routes->post('/additemvalue', 'Home::additemvalue');
+$routes->post('/codersadd', 'Home::codersadd');
+

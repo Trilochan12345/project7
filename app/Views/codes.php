@@ -64,7 +64,7 @@
       <th scope="col">ID</th>
       <th scope="col">Codes</th>
       <th scope="col">Date</th>
-      <th scope="col">Description</th>
+      <th scope="col">Process</th>
       <th scope="col">Status</th>
       <th scope="col">Edit</th>
     </tr>

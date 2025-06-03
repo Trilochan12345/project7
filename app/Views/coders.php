@@ -60,41 +60,35 @@
   </span>
   <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon1">
 </div>
+<div class="text-end mt-3">
+  <a href="/createaccount" class="btn btn-primary">
+    <i class="bi bi-plus-circle me-1"></i> Create Account
+  </a>
+</div>
+
 
 <!-- Main Content -->
 <main class="content container">
   <div class="row gy-4">
 
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@social</td>
-    </tr>
-  </tbody>
-</table>
+  <?php if (!empty($code) && is_array($code)) : ?>
+    <?php foreach ($code as $coder) : ?>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><?= esc($coder['name']) ?></h5>
+                <p class="card-text"><?= esc($coder['phone']) ?></p>
+                <p class="card-text"><small class="text-body-secondary"><?= esc($coder['series']) ?></small></p>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php else : ?>
+    <div class="alert alert-warning" role="alert">
+        No coders found.
+    </div>
+<?php endif; ?>
+
+
+
 </div>
 
     

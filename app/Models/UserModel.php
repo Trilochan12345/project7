@@ -6,16 +6,21 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table      = 'register';
+    protected $table = 'users';
     protected $primaryKey = 'id';
+    
+    protected $allowedFields = ['username', 'email', 'password']; // Add other columns if needed
+    protected $returnType = 'array';
 
-    protected $allowedFields = ['username', 'email', 'password'];
-    protected $returnType    = 'array';
+    protected $useTimestamps = true;
 
-    public function getUserByEmailOrUsername($identity)
+    /**
+     * Get user by username or email
+     */
+    public function getUserByEmailOrUsername(string $identity)
     {
-        return $this->where('email', $identity)
-                    ->orWhere('username', $identity)
+        return $this->where('username', $identity)
+                    ->orWhere('email', $identity)
                     ->first();
     }
 }
