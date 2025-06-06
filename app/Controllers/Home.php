@@ -6,6 +6,8 @@ use App\Models\UserModel;
 
 use App\Models\ItemModel;
 
+use App\Models\CodesModel;
+
 class Home extends BaseController
 {
     public function index(): string
@@ -104,7 +106,19 @@ class Home extends BaseController
     }
     public function codes()
     {
-        return view('codes');
+        $codesModel = new \App\Models\CodesModel();
+
+        $data['codes'] = $codesModel->getJoinedData();
+
+        return view('codes',$data);
+    }
+    public function addcodes()
+    {
+        $itemModel = new \App\Models\ItemModel();
+
+        $items = $itemModel->findAll();
+
+        return view('addcodes',['items' => $items]);
     }
    public function additem()
 {
@@ -129,6 +143,26 @@ public function additemvalue()
     
 }
 }
+
+public function codesadd()
+    {
+        
+
+        $codesModel = new \App\Models\CodesModel();
+
+        $data = [
+            'series'       => $this->request->getPost('series'),
+            'category'     => $this->request->getPost('category'),
+            'phone'        => $this->request->getPost('phone'),
+            'series_text'  => $this->request->getPost('series_text'),
+            'description'  => $this->request->getPost('description'),
+            'item_id'      => $this->request->getPost('item'),
+        ];
+
+        $codesModel->insert($data);
+
+        return redirect()->to('/codes')->with('success', 'Record added successfully!');
+    }
 
 
 }

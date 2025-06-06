@@ -57,37 +57,57 @@
 <!-- Main Content -->
 <main class="content container">
   <div class="row gy-4">
+<form action="/codesadd" method="post">
+    <?= csrf_field() ?>
 
- <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Series</th>
-      <th scope="col">Category</th>
-      <th scope="col">SR No</th>
-      <th scope="col">Description</th>
-      <th scope="col">Item</th>
-      <th scope="col">Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($codes as $index => $code): ?>
-      <tr>
-        <th scope="row"><?= $index + 1 ?></th>
-        <td><?= esc($code['series']) ?></td>
-        <td><?= esc($code['category']) ?></td>
-        <td><?= esc($code['srno']) ?></td> <!-- Assuming 'phone' is SR No -->
-        <td><?= esc($code['description']) ?></td>
-        <td><?= esc($code['item_name']) ?></td>
-        <td>
-          <a href="/edit/<?= $code['id'] ?>" class="btn btn-sm btn-outline-primary">
-            <i class="bi bi-pencil-square"></i>
-          </a>
-        </td>
-      </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
+    <div class="mb-3">
+    <select name="series" class="form-control" required>
+        <option value="">Select Series</option>
+        <option value="Series A">Series A</option>
+        <option value="Series B">Series B</option>
+        <option value="Series C">Series C</option>
+        <!-- Add more options as needed -->
+    </select>
+</div>
+
+    <div class="mb-3">
+    <select name="category" class="form-control" required>
+        <option value="">Select category</option>
+        <option value="Series A">Series A</option>
+        <option value="Series B">Series B</option>
+        <option value="Series C">Series C</option>
+        
+    </select>
+</div>
+
+    <div class="mb-3">
+        <input type="text" name="phone" class="form-control" placeholder="SR NO" required>
+    </div>
+
+    <div class="mb-3">
+        <input type="text" name="series_text" class="form-control" placeholder="Enter Series" required>
+    </div>
+
+    <div class="mb-3">
+        <input type="text" name="description" class="form-control" placeholder="Description"  required>
+    </div>
+    <div class="mb-3">
+    <select name="item_id" class="form-control" required>
+        <option value="">Select Item</option>
+        <?php foreach ($items as $item): ?>
+            <option value="<?= $item['id'] ?>">
+                <?= $item['item_name'] ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+
+    <div class="mb-3">
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </div>
+</form>
+
 
 
 </div>
@@ -98,11 +118,6 @@
 
   </div>
 </main>
-<div class="text-end mt-3">
-  <a href="/addcodes" class="btn btn-primary">
-    <i class="bi bi-plus-circle me-1"></i> Add Code
-  </a>
-</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>

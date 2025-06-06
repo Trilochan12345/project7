@@ -20,6 +20,8 @@ $routes->get('/register', 'Home::register');
 $routes->get('/dashboard', 'Home::dashboard');
 $routes->get('/dispatch', 'Home::dispatch');
 $routes->get('/codes', 'Home::codes');
+$routes->get('/addcodes', 'Home::addcodes');
+$routes->post('/codesadd', 'Home::codesadd');
 $routes->get('/coders', 'Home::coders');
 $routes->get('/createaccount', 'Home::createaccount');
 
